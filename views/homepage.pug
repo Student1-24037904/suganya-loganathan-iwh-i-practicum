@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+  body
+    h1 Custom Object Records
+
+    br
+    a(href="/update-cobj") Add to this table
+    br
+    br
+
+    table(border="1")
+      tr
+        th Name
+        th Author
+        th Genre
+
+      each obj in objects
+        tr
+          td= obj.properties.name
+          td= obj.properties.author
+          td= obj.properties.genre
