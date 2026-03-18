@@ -7,7 +7,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 app.set('views',path.join(__dirname,'views'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 const PORT = 3000;
 
 //app.use(express.json());
@@ -32,8 +32,7 @@ app.get('/', async (req, res) => {
 
   } catch (error) {
     console.error(error.response?.data || error.message);
-    res.send('Error fetching data');
-  }
+    res.status(500).send('Error fetching data');  }
 });
 
 
@@ -68,13 +67,12 @@ app.post('/update-cobj', async (req, res) => {
 
   } catch (error) {
     console.error(error.response?.data || error.message);
-    res.send('Error creating record');
-  }
+    res.status(500).send('Error creating record');  }
 });
 
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:3000}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 
